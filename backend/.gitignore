@@ -1,0 +1,50 @@
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 日志和临时文件
+logs/*.log
+temp/*
+!temp/.gitkeep
+output/*
+!output/.gitkeep
+
+# 环境配置
+.env
+config.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 模型文件（大文件）
+*.pt
+*.pth
+*.bin
+*.safetensors
+models/
