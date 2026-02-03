@@ -1,0 +1,66 @@
+# Dependencies
+frontend/node_modules/
+electron/node_modules/
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/*.pyc
+
+# Build outputs
+frontend/dist/
+electron/dist/
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Python
+.Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Output files
+output/
+*.srt
+*.txt
+
+# Model files
+*.pt
+*.pth
+*.onnx
+
+# Config files (may contain sensitive data)
+config.json
+!config.example.json
