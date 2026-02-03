@@ -1,0 +1,70 @@
+{
+  "name": "video-subtitle-electron",
+  "version": "1.0.0",
+  "description": "Electron main process",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron . --dev",
+    "build": "echo 'Building electron...'",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.aze.subtitle-helper",
+    "productName": "阿泽字幕助手",
+    "copyright": "Copyright © 2024",
+    "directories": {
+      "output": "../dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "../frontend/dist/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend/dist",
+        "to": "backend",
+        "filter": ["阿泽字幕助手-后端.exe"]
+      },
+      {
+        "from": "../ffmpeg",
+        "to": "ffmpeg",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "../backend/app_icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "阿泽字幕助手",
+      "installerIcon": "../backend/app_icon.ico",
+      "uninstallerIcon": "../backend/app_icon.ico",
+      "installerHeaderIcon": "../backend/app_icon.ico"
+    },
+    "portable": {
+      "artifactName": "阿泽字幕助手-便携版-${version}.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
+}
