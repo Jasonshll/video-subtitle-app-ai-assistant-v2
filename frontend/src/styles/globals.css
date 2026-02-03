@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #0066FF;
+    --primary-hover: #0052CC;
+    --background: #FFFFFF;
+    --background-secondary: #F7F7F8;
+    --foreground: #1A1A1A;
+    --foreground-muted: #666666;
+    --border: #E5E7EB;
+    
+    --background-dark: #121212;
+    --background-dark-secondary: #1E1E1E;
+    --foreground-dark: #E5E7EB;
+    --foreground-dark-muted: #9CA3AF;
+    --border-dark: #2D2D2D;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased overflow-hidden;
+    @apply transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-background-dark text-foreground-dark;
+  }
+
+  /* 自定义滚动条 - Notion 风格 */
+  ::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+    @apply hover:bg-foreground-muted;
+    @apply transition-colors;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-border-dark;
+  }
+
+  /* 选中文本样式 */
+  ::selection {
+    @apply bg-primary/20;
+  }
+}
+
+@layer components {
+  /* 窗口拖拽区域 */
+  .drag-region {
+    -webkit-app-region: drag;
+  }
+
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+
+  /* 侧边栏样式 */
+  .sidebar {
+    @apply bg-background-secondary border-r border-border h-full flex flex-col;
+    @apply transition-colors duration-300;
+  }
+
+  .dark .sidebar {
+    @apply bg-background-dark-secondary border-border-dark;
+  }
+
+  /* 按钮基础样式 */
+  .btn {
+    @apply px-3 py-1.5 rounded-md font-medium text-sm;
+    @apply transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply whitespace-nowrap h-8;
+    @apply inline-flex items-center justify-center gap-1.5;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white;
+    @apply hover:bg-primary-hover;
+  }
+
+  .btn-secondary {
+    @apply btn bg-background border border-border text-foreground;
+    @apply hover:bg-background-secondary;
+  }
+
+  .dark .btn-secondary {
+    @apply bg-background-dark border-border-dark text-foreground-dark;
+    @apply hover:bg-background-dark-secondary;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-foreground-muted;
+    @apply hover:bg-background-secondary hover:text-foreground;
+  }
+
+  .dark .btn-ghost {
+    @apply hover:bg-background-dark-secondary hover:text-foreground-dark;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-500/10 text-red-500 border border-red-500/20;
+    @apply hover:bg-red-500 hover:text-white;
+  }
+
+  /* 输入框样式 */
+  .input {
+    @apply px-3 py-1.5 rounded-md text-sm;
+    @apply bg-background-secondary border border-border;
+    @apply text-foreground placeholder-foreground-muted;
+    @apply focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary;
+    @apply transition-all duration-200;
+  }
+
+  .dark .input {
+    @apply bg-background-dark-secondary border-border-dark text-foreground-dark;
+  }
+
+  /* 卡片样式 */
+  .card {
+    @apply bg-background border border-border rounded-lg overflow-hidden;
+    @apply transition-all duration-200;
+  }
+
+  .dark .card {
+    @apply bg-background-dark border-border-dark;
+  }
+
+  /* 标签样式 */
+  .badge {
+    @apply px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary/10 text-primary;
+  }
+
+  .badge-success {
+    @apply badge bg-green-500/10 text-green-500;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-500/10 text-yellow-500;
+  }
+
+  .badge-error {
+    @apply badge bg-red-500/10 text-red-500;
+  }
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
